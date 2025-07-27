@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Frozzit - Heladería artesanal">
+    <title>Frozzit</title>
+    
+    <style>
+        :root {
+            --primary: #00bcd4;
+            --dark: #2c3e50;
+            --light: #ffffff;
+            --gray: #f8f9fa;
+            --text: #333;
+            --border: #e9ecef;
+            --sky-blue: #87ceeb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: var(--sky-blue);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            z-index: 100;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+
+        .logo:hover {
+            transform: scale(1.1);
+        }
+
+        .logo svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Para usar tu propio logo SVG */
+        .logo-svg {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: var(--gray);
+            border-right: 1px solid var(--border);
+            padding: 80px 0 20px;
+            position: fixed;
+            width: 240px;
+            height: 100vh;
+        }
+
+        .nav {
+            padding: 0 20px;
+        }
+
+        .nav a {
+            display: block;
+            padding: 12px 16px;
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 6px;
+            margin-bottom: 4px;
+            transition: background 0.2s;
+        }
+
+        .nav a:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Main content */
+        .main {
+            margin-left: 240px;
+            padding: 100px 40px 40px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        /* Mobile menu */
+        .menu-btn {
+            display: none;
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            z-index: 200;
+        }
+
+        /* Logo alternativo con imagen externa */
+        .logo-img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+
+        /* Responsive logo */
+        @media (max-width: 768px) {
+            .logo {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .logo-svg {
+                width: 60px;
+                height: 60px;
+            }
+        }
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s;
+                z-index: 150;
+                top: 60px;
+                height: calc(100vh - 60px);
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .main {
+                margin-left: 0;
+                padding: 80px 20px 20px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="#" class="logo">
+            <img src="logo.svg" alt="Frozzit Logo" class="logo-svg">
+        </a>
+        
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    </div>
+
+    <div class="container">
+        <nav class="sidebar" id="sidebar">
+            <div class="nav">
+                <a href="#">Inicio</a>
+                <a href="#">Sabores</a>
+                <a href="#">Promociones</a>
+                <a href="#">Contacto</a>
+            </div>
+        </nav>
+
+        <main class="main">
+            <div class="hero">
+                <h1>Bienvenido a Frozzit</h1>
+                <p>Helados artesanales hechos con ingredientes frescos y naturales. Cada sabor cuenta una historia única.</p>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('sidebar').classList.toggle('open');
+        }
+
+        // Cerrar menú al hacer clic fuera
+        document.addEventListener('click', (e) => {
+            const sidebar = document.getElementById('sidebar');
+            const menuBtn = document.querySelector('.menu-btn');
+            
+            if (!sidebar.contains(e.target) && !menuBtn.contains(e.target)) {
+                sidebar.classList.remove('open');
+            }
+        });
+    </script>
+</body>
+</html>
