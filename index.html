@@ -24,7 +24,8 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Fantasque Sans Mono', 'Courier New', monospace;
+            font-weight: 700;
             line-height: 1.6;
             color: var(--text);
             background: var(--light);
@@ -114,9 +115,44 @@
             padding: 100px 40px 40px;
         }
 
+        .info-section {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: var(--gray);
+            border-radius: 12px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-icon {
+            width: 24px;
+            height: 24px;
+            margin-top: 2px;
+        }
+
+        .info-icon.material-icons {
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .info-text {
+            line-height: 1.5;
+        }
+
         .hero h1 {
+            font-family: 'Open Sans', sans-serif;
             font-size: 2.5rem;
-            font-weight: 300;
+            font-weight: 700;
             color: var(--dark);
             margin-bottom: 1rem;
         }
@@ -213,7 +249,27 @@
         <main class="main">
             <div class="hero">
                 <h1>Bienvenido a Frozzit</h1>
-                <p>Helados artesanales hechos con ingredientes frescos y naturales. Cada sabor cuenta una historia única.</p>
+                <p>  </p>
+                
+                <div class="info-section">
+                    <div class="info-item">
+                        <img src="helado.png" alt="Helado" class="info-icon">
+                        <span class="info-text">Sabor, color y experiencia en cada cucharada</span>
+                    </div>
+                    
+                    <div class="info-item">
+                        <img src="maps-and-location.png" alt="Ubicación" class="info-icon">
+                        <span class="info-text">Av. Ferrocarril 950, Jardines de Durango</span>
+                    </div>
+                    
+                    <div class="info-item">
+                        <img src="tiempo.png" alt="Horario" class="info-icon">
+                        <span class="info-text">
+                            Dom-Jue 11am - 8:30pm<br>
+                            Vie 11am - 5:30pm
+                        </span>
+                    </div>
+                </div>
             </div>
         </main>
     </div>
